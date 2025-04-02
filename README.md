@@ -1,2 +1,3 @@
 # OpenGL-Cowboy
-work in progress...
+A game created using GLFW and GLM libraries. 
+Currently unfinished.
