@@ -47,6 +47,7 @@ void GameObject::SetRotation(float angle){
 }
 
 
+
 void GameObject::Update(double delta_time) {
 
 }

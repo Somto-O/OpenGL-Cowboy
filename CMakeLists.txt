@@ -20,7 +20,21 @@ set(HDRS
     enemy_factory.h
     mole_enemy.h
     bandit_enemy.h
-    boss_enemy.h 
+    boss_enemy.h
+    healthBar.h
+    gunUi.h
+    text_game_object.h
+    sherrifStar.h
+    heart.h
+    shield.h
+    blocker.h
+    particles.h
+    particle_system.h
+    hand.h
+    Tnt.h
+    UpperArm.h
+    LowerArm.h
+   
 )
  
 set(SRCS
@@ -33,6 +47,11 @@ set(SRCS
     sprite.cpp
     sprite_vertex_shader.glsl
     sprite_fragment_shader.glsl
+    text_fragment_shader.glsl
+    sprite_vertex_shader_2.glsl
+    sprite_background_shader.glsl
+    particle_fragment_shader.glsl
+    particle_vertex_shader.glsl
     timer.cpp
     collectible_game_object.cpp
     enemy_game_object.cpp
@@ -41,6 +60,20 @@ set(SRCS
     mole_enemy.cpp
     bandit_enemy.cpp
     boss_enemy.cpp
+    healthBar.cpp
+    gunUi.cpp
+    text_game_object.cpp
+    sherrifStar.cpp
+    heart.cpp
+    shield.cpp
+    blocker.cpp
+    particles.cpp
+    particle_system.cpp
+    Hand.cpp
+    Tnt.cpp
+    UpperArm.cpp
+    LowerArm.cpp
+
 )
 
 # Add path name to configuration file

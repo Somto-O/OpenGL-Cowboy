@@ -30,6 +30,7 @@ namespace game {
             inline glm::vec3 GetPosition(void) const { return position_; }
             inline float GetScale(void) const { return scale_; }
             inline float GetRotation(void) const { return angle_; }
+           
 
             // Get bearing direction (direction in which the game object
             // is facing)
@@ -42,6 +43,8 @@ namespace game {
             inline void SetPosition(const glm::vec3& position) { position_ = position; }
             inline void SetScale(float scale) { scale_ = scale; }
             void SetRotation(float angle);
+            void SetAngle(float angle) { angle_ = angle; }
+            
 
 
         protected:

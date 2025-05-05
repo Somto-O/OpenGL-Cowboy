@@ -4,7 +4,8 @@
 #include <iostream>
 
 #include "game_object.h"
-//#include "timer.h" - will include if needed
+#include "timer.h"
+
 
 namespace game {
 
@@ -14,11 +15,29 @@ namespace game {
         public:
             PlayerGameObject(const glm::vec3 &position, Geometry *geom, Shader *shader, GLuint texture);
 
+            int getHealth()const { return health_; }
+            Timer getBulletCoolDown()const { return bulletcooldown_; }
+            float getPistolReloadSpeed()const { return PistolReloadSpeed_; }
+            float getShotGunReloadSpeed()const { return ShotGunReloadSpeed_; }
+            void  AddHealth();
+           
             // Update function 
             void Update(double delta_time) override;
+            Timer bulletcooldown_;
+            Timer powerUP_;
+            void TakeDamage();
+            void addScore() { score_++; };
+            int getScore()const { return score_; }
+            bool getBlocking()const { return blocking_; }
+            void Block() { blocking_ = true; }
+            void SetBlocking(bool block){ blocking_ = block; }
 
     private:
-		int health_ = 0;
+		int health_;
+        float PistolReloadSpeed_ = 0.7;
+        float ShotGunReloadSpeed_ = 1.5;
+        bool blocking_ = false;
+        int score_;
 
     }; // class PlayerGameObject
 

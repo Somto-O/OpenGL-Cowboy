@@ -5,6 +5,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
+#include <iostream>
 
 #include "shader.h"
 #include "game_object.h"
@@ -12,6 +13,8 @@
 #include "collectible_game_object.h"
 #include "enemy_game_object.h"
 #include "projectile_game_object.h"
+#include "timer.h"
+#include "enemy_factory.h"
 
 namespace game {
 
@@ -28,14 +31,28 @@ namespace game {
             void Init(void); 
 
             // Textures enum
-			enum Textures { // just as a placeholder
+            enum Textures { // just as a placeholder
                 tex_cowboy = 0,
-				tex_boss = 1,
+                tex_bandit = 1,
                 tex_item = 2,
-				tex_pistol = 3,
-				tex_shotgun = 4,
-				tex_bullet = 5,
-				tex_wildwest = 6
+                tex_pistol = 3,
+                tex_shotgun = 4,
+                tex_bullet = 5,
+                tex_shell = 6,
+                tex_ammo = 7,
+                tex_wildwest = 8,
+                tex_healthBar = 9,
+                tex_font = 10,
+                tex_star = 11,
+                tex_heart = 12,
+                tex_shield = 13,
+                tex_blocker = 14,
+                tex_mole = 15,
+                tex_boss = 16,
+                tex_hand = 17,
+                tex_lower = 18,
+                tex_upper = 19,
+                tex_tnt = 20
             };
 
             // Set up the game world (scene, game objects, etc.)
@@ -48,7 +65,7 @@ namespace game {
             void MainLoop(void); 
 
 			// placeholders for when we implement them
-            void HandleCollision();
+            void HandleCollision(GameObject*, GameObject*);
 
         private:
             // Main window: pointer to the GLFW window structure
@@ -60,11 +77,26 @@ namespace game {
             // Shader for rendering sprites in the scene
             Shader sprite_shader_;
 
+            Shader text_shader_;
+
+            Shader background_shader_;
+
+            Shader particle_shader_;
+
             // References to textures
             // This needs to be a pointer
             GLuint *tex_;
 
-			// List of game objects - player, enemies, collectibles and whatever else we add
+            // check if space key is pressed
+			bool space_key_pressed_; 
+
+            // check if P key is pressed
+            bool p_key_pressed_;
+
+            // current projectile state
+            ProjectileState current_projectile_state_;
+
+            // List of game objects - player, enemies, collectibles and whatever else we add
             std::vector<GameObject*> game_objects_;
 
             // Keep track of time
@@ -90,6 +122,24 @@ namespace game {
 
             // Ray-Circle Collision
             bool RayCircleCollision(const glm::vec2& p0, const glm::vec2& p1, const glm::vec2& center, float radius);
+            
+            // Score counter
+            int Score;
+
+            // Timers for enemies
+            Timer mole_spawn_timer_;
+            Timer bandit_spawn_timer_;
+			Timer heart_spawn_timer_;
+			Timer ammo_spawn_timer_;
+
+            // Enemy factory
+            EnemyFactory enemy_factory_;
+
+            // game over flag
+            bool game_over_ = false;
+
+            int pistol_ammo_ = 10;
+            int shotgun_ammo_ = 7;
 
     }; // class Game
 
