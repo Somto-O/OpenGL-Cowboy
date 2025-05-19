@@ -310,7 +310,7 @@ namespace game {
 						// Check for collision
 						glm::vec2 projectile_position = glm::vec2(current_game_object->GetPosition());
 						glm::vec2 player_position = glm::vec2(other_game_object->GetPosition());
-						float player_radius = other_game_object->GetScale() * 0.4f;
+						float player_radius = other_game_object->GetScale() * 0.25f;
 
 						if (RayCircleCollision(projectile_position, projectile_position + glm::vec2(current_game_object->GetBearing()), player_position, player_radius)) {
 							// Handle collision with player
@@ -496,7 +496,7 @@ namespace game {
 							// Check for collision
 							glm::vec2 mole_position = glm::vec2(current_game_object->GetPosition());
 							glm::vec2 player_position = glm::vec2(other_game_object->GetPosition());
-							float player_radius = other_game_object->GetScale() * 0.1f;
+							float player_radius = other_game_object->GetScale() * 0.01f;
 
 							if (RayCircleCollision(mole_position, mole_position + glm::vec2(current_game_object->GetBearing()), player_position, player_radius)) {
 								// Handle collision
